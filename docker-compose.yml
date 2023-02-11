@@ -1,0 +1,26 @@
+version: "3.7"
+
+services:
+  postgres:
+    image: postgres:12.2
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+  
+  hazel:
+    build: .
+    # image: ghcr.io/eliasblume/hazel:latest
+    container_name: hazel
+    restart: always
+    volumes:
+      - ./hazel://var/lib/hazel/storage/
+      - ./hazel.toml:/app/hazel.toml
+    ports:
+      - 8080:8080
