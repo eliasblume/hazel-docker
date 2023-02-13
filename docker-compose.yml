@@ -1,5 +1,8 @@
 version: "3.7"
 
+volumes:
+  postgres:
+
 services:
   postgres:
     image: postgres:12.2
@@ -12,7 +15,7 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - ./postgres:/var/lib/postgresql/data
+      - postgres:/var/lib/postgresql/data
   
   hazel:
     build: .
@@ -20,7 +23,7 @@ services:
     container_name: hazel
     restart: always
     volumes:
-      - ./hazel://var/lib/hazel/storage/
+      - ./hazel:/var/lib/hazel/storage/
       - ./hazel.toml:/app/hazel.toml
     ports:
       - 8080:8080

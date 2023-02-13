@@ -4,7 +4,7 @@ migrations = "/usr/share/hazel/migrations/"
 storage = "/var/lib/hazel/storage/"
 
 [web]
-max_upload_filesize_mb = 10
+max_upload_filesize_mb = 999
 resources = "/usr/share/hazel/resources/"
 
 [server]
